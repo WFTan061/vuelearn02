@@ -2,10 +2,7 @@
 node_modules
 /dist
 /public
-<<<<<<< HEAD
 
-=======
->>>>>>> e0cf07f68f8e4813d51430d98f9a3acbe6ed17f6
 # local env files
 .env.local
 .env.*.local
