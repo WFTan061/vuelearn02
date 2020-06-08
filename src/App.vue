@@ -1,7 +1,11 @@
 <template>
   <div id="app">
-    <Header testing = "1234"/>
-    <Table/>
+    <Header
+      @addLink="addLink"/>
+    <Table
+      v-bind:links="links"
+      @editLink = "editLink"
+      @deleteLink = "deleteLink"/>
   </div>
 </template>
 
@@ -10,12 +14,30 @@
 import Header from './components/Header.vue'
 import Table from './components/Table.vue'
 //methods import
-import {addLink} from './components/methods/Add.js';
-import {deleteLink} from './components/methods/Delete.js';
-import {editLink} from './components/methods/Edit.js';
+import {addLink} from './components/Methods/Add.js';
+import {deleteLink} from './components/Methods/Delete.js';
+import {editLink} from './components/Methods/Edit.js';
 
 export default {
   name: 'App',
+    data:function(){
+      return{
+        links:[
+        {
+          linkName:'Google',
+          linkAddress:'http://localhost:8080',
+          linkIcon:'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png',
+          dateCreated:'10/10/2009'
+        },
+        {
+          linkName:'Google',
+          linkAddress:'http://localhost:8080',
+          linkIcon:'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png',
+          dateCreated:'10/10/2009'
+        }
+        ],
+      }
+    },
   components: {
     Header,
     Table
@@ -39,3 +61,8 @@ export default {
 }
 </style>
 <!-- methods here??-->
+
+<!--
+
+
+-->

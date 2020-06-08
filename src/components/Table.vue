@@ -22,8 +22,8 @@
 				</template>
 
 				<template v-slot:cell(actions) = "data">
-					<button @click="startEdit(data.item,data.index)"><b-icon icon = "pencil"></b-icon></button>
-					<button @click="deleteItem(data.item,data.index)"><b-icon icon = "trash"></b-icon></button>
+					<button @click="$emit('editLink',data.item)"><b-icon icon = "pencil"></b-icon></button>
+					<button @click="$emit('deleteLink',data.item)"><b-icon icon = "trash"></b-icon></button>
 				</template>
 		</b-table>
 	</div>
@@ -33,33 +33,9 @@
 	export default{
 		data:function(){
 			return{
-				links:[
-					{
-						linkName:'Google',
-						linkAddress:'http://localhost:8080',
-						linkIcon:'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png',
-						dateCreated:'10/10/2009'
-					},
-					{
-						linkName:'Google',
-						linkAddress:'http://localhost:8080',
-						linkIcon:'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png',
-						dateCreated:'10/10/2009'
-					}
-				],
 				tableFields:['index',{key:'name',label:'Name of Link'},{key:'icon',label:'Link'},{key:'date',label:'Date Created'},{key:'actions',label:'actions'}],
 			}
 		},
-		methods:{
-			startEdit(item,index){
-				console.log(item);
-				console.log(index);
-			},
-			deleteItem(item,index){
-				console.log(item);
-				console.log(index);
-			}
-
-		} 
+		props:['links'],
 	}
 </script>

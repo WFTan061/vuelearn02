@@ -1,3 +1,3 @@
-export function deleteLink(){
-	alert("deleting link");
+export function deleteLink(link){
+	alert("deleting link" + link);
 }

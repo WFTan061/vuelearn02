@@ -1,3 +1,3 @@
-export function addLink(){
-	alert("adding link");
+export function addLink(link){
+	alert("adding link" + link);
 }

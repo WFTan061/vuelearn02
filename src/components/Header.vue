@@ -49,7 +49,6 @@
 </template>
 <script>
 	export default{
-		props:['testing',],
 		data: function(){
 			return{
 				form:{
