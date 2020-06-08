@@ -6,15 +6,24 @@
 </template>
 
 <script>
+//vue components import
 import Header from './components/Header.vue'
 import Table from './components/Table.vue'
-
+//methods import
+import {addLink} from './components/methods/Add.js';
+import {deleteLink} from './components/methods/Delete.js';
+import {editLink} from './components/methods/Edit.js';
 
 export default {
   name: 'App',
   components: {
     Header,
     Table
+  },
+  methods:{
+    addLink,
+    deleteLink,
+    editLink,
   }
 }
 </script>
@@ -29,3 +38,4 @@ export default {
   margin-top: 60px;
 }
 </style>
+<!-- methods here??-->

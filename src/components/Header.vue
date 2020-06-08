@@ -50,7 +50,7 @@
 <script>
 	export default{
 		props:['testing',],
-		data(){
+		data: function(){
 			return{
 				form:{
 					linkName:'',
