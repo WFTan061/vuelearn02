@@ -1,4 +1,4 @@
-# Vuelearn02
+# vueclibasic
 
 ## Project setup
 ```
