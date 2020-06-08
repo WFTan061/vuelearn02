@@ -2,8 +2,11 @@
 
 ## Todos
 ```
-Methods function: Add/Edit/Delete link. Currently placeholder functions to test they are passed properly to components.
-Modal for adding, layout done, figuring out where to add function to "ok" button.
+Methods function: 
+Add/Edit/Delete link. Currently placeholder functions to test they are passed properly to components.
+
+Modal for adding: layout done, figuring out where to add function to "ok" button.
+
 Modal for editing : TODO, might need additional function.
 ```
 ## Project Description
