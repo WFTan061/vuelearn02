@@ -2,7 +2,9 @@
 	<div>
 		<b-button v-b-modal = "'modal-1'">Add</b-button>
 		
-		<b-modal id ="modal-1" title = "Add link">
+		<b-modal id ="modal-1" title = "Add link" ref = "modal"
+			@ok="handleOk"
+			>
 			<b-form @submit.prevent>
 				<b-form-group
 					id="name"
@@ -56,6 +58,19 @@
 					linkAddress:'',
 					linkIcon:'',
 				}
+			}
+		},
+		methods:{
+			handleOk(bvModalEvt){
+				bvModalEvt.preventDefault();
+				this.handleSubmit();
+
+			},
+			handleSubmit(){
+				console.log(this.form.linkName + " " + this.form.linkAddress + " " + this.form.linkIcon);
+				this.$nextTick(function(){
+					this.$bvModal.hide('modal-1');
+				})
 			}
 		}
 	}
