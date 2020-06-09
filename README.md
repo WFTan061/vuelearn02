@@ -12,7 +12,9 @@ Modal for editing : TODO, might need additional function.
 ```
 ## Project Description
 ```
-
+My Favourites app created with Vue CLI. 
+The app maintains a list of favourite links that can be added, deleted and edited.
+However, it does not has any persistence, at the moment.
 ```
 
 ## Project setup

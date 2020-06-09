@@ -1,8 +1,8 @@
 <template>
 	<div>
-		<b-button v-b-modal = "'modal-1'">Add</b-button>
+		<b-button v-b-modal = "'modal-add'"	>Add</b-button>
 		
-		<b-modal id ="modal-1" title = "Add link" ref = "modal"
+		<b-modal id ="modal-add" title = "Add link" ref = "modal-add"
 			@ok="handleOk"
 			@hidden="resetModal"
 			@show="resetModal"
@@ -72,7 +72,7 @@
 				console.log(this.form.linkName + " " + this.form.linkAddress + " " + this.form.linkIcon);
 				this.$emit('addLink',this.form);
 				this.$nextTick(function(){
-					this.$bvModal.hide('modal-1');
+					this.$bvModal.hide('modal-add');
 				})
 			},
 			resetModal(){
@@ -81,7 +81,7 @@
 					linkAddress:'',
 					linkIcon:'',
 				}
-			}
+			},
 		}
 	}
 </script>
