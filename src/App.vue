@@ -14,9 +14,9 @@
 import Header from './components/Header.vue'
 import Table from './components/Table.vue'
 //methods import
-import {addLink} from './components/Methods/Add.js';
-import {deleteLink} from './components/Methods/Delete.js';
-import {editLink} from './components/Methods/Edit.js';
+import {addLinkHelper} from './components/Methods/Add.js';
+import {deleteLinkHelper} from './components/Methods/Delete.js';
+import {editLinkHelper} from './components/Methods/Edit.js';
 
 export default {
   name: 'App',
@@ -43,9 +43,18 @@ export default {
     Table
   },
   methods:{
-    addLink,
-    deleteLink,
-    editLink,
+    addLinkHelper,
+    editLinkHelper,
+    deleteLinkHelper,
+    addLink(link){
+      addLinkHelper(link,this.links);
+    },
+    deleteLink(link){
+      deleteLinkHelper(link,this.links);
+    },
+    editLink(link){
+      editLinkHelper(link,this.links);
+    }
   }
 }
 </script>

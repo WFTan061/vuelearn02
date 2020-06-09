@@ -4,6 +4,8 @@
 		
 		<b-modal id ="modal-1" title = "Add link" ref = "modal"
 			@ok="handleOk"
+			@hidden="resetModal"
+			@show="resetModal"
 			>
 			<b-form @submit.prevent>
 				<b-form-group
@@ -68,9 +70,17 @@
 			},
 			handleSubmit(){
 				console.log(this.form.linkName + " " + this.form.linkAddress + " " + this.form.linkIcon);
+				this.$emit('addLink',this.form);
 				this.$nextTick(function(){
 					this.$bvModal.hide('modal-1');
 				})
+			},
+			resetModal(){
+				this.form = {
+					linkName:'',
+					linkAddress:'',
+					linkIcon:'',
+				}
 			}
 		}
 	}

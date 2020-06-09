@@ -1,3 +1,3 @@
-export function editLink(link){
+export function editLinkHelper(link){
 	alert("editing link" + link);
 }

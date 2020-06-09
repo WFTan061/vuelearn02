@@ -1,3 +1,4 @@
-export function deleteLink(link){
-	alert("deleting link" + link);
+export function deleteLinkHelper(index,linkArray){
+	linkArray.splice(index,1);
+
 }

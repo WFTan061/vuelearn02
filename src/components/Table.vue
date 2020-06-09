@@ -23,7 +23,7 @@
 
 				<template v-slot:cell(actions) = "data">
 					<button @click="$emit('editLink',data.item)"><b-icon icon = "pencil"></b-icon></button>
-					<button @click="$emit('deleteLink',data.item)"><b-icon icon = "trash"></b-icon></button>
+					<button @click="$emit('deleteLink',data.index)"><b-icon icon = "trash"></b-icon></button>
 				</template>
 		</b-table>
 	</div>
