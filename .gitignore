@@ -6,7 +6,7 @@ node_modules
 
 
 # firebase stuff
-/firebase
+/.firebase
 .firebaserc
 firebase.json
 
