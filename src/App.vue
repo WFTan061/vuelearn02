@@ -20,6 +20,7 @@ import {editLinkHelper} from './components/Methods/Edit.js';
 
 export default {
   name: 'App',
+    //head app should contain the links data.
     data:function(){
       return{
         links:[
@@ -38,11 +39,14 @@ export default {
         ],
       }
     },
+  //components
   components: {
     Header,
     Table
   },
+  //methods
   methods:{
+    //3 helpers to modify the links data.
     addLinkHelper,
     editLinkHelper,
     deleteLinkHelper,

@@ -3,6 +3,7 @@
 	
 	<div class = "container">
 		<b-table :fields = "tableFields" :items = "links" responsive = "lg">
+				<!-- row data-->
 				<template v-slot:cell(index) = "data">
 					{{data.index}} 
 				</template>
@@ -20,9 +21,15 @@
 				<template v-slot:cell(date) = "data">
 					{{data.item.dateCreated}}
 				</template>
+				
 
+				<!-- Action column contains 2 buttons leading to 2 functions, edit and delete.-->
 				<template v-slot:cell(actions) = "data">
+					<!-- 2 buttons-->
 					<b-button v-b-modal="'linkModalEdit' + data.index" @click="toEdit(data.item,data.index)"><b-icon icon = "pencil"></b-icon></b-button>
+					<b-button @click="$emit('deleteLink',data.index)"><b-icon icon = "trash"></b-icon></b-button>
+
+					<!-- modal for edit form, change ok actions and reset modal every time hidden.-->
 					<b-modal v-bind:id = "'linkModalEdit' + data.index"
 					@ok="handleOk"
 					@hidden="resetModal"
@@ -95,12 +102,6 @@
 							</b-form-group>
 						</b-form>			
 					</b-modal>
-					<!--
-						1) edit button to pull up modal
-						2) bring up information into modal (Editable info.)
-						3) 
-					-->
-					<b-button @click="$emit('deleteLink',data.index)"><b-icon icon = "trash"></b-icon></b-button>
 				</template>
 
 		</b-table>
@@ -111,7 +112,9 @@
 	export default{
 		data:function(){
 			return{
+				//table fields
 				tableFields:['index',{key:'name',label:'Name of Link'},{key:'icon',label:'Link'},{key:'date',label:'Date Created'},{key:'actions',label:'actions'}],
+				//data for edit form
 				editItem:{
 					index:-1, //item to edit
 					linkName:'', //name given to the link
@@ -121,8 +124,10 @@
 				}
 			}
 		},
+		//receive links from main app.
 		props:['links'],
 		methods:{
+			//move row info into edit modal.
 			toEdit(item,index){
 				let keys = Object.keys(item);
 				let key;
@@ -131,10 +136,12 @@
 				}
 				this.editItem.index = index;
 			},
+			//stop ok from performing normal function.
 			handleOk(bvModalEvt){
 				bvModalEvt.preventDefault();
 				this.handleSubmit();
 			},
+			//reset modal when hiding modal (cancel/exit)
 			resetModal(){
 				this.editItem = {
 					index:-1, //item to edit
@@ -144,9 +151,9 @@
 					dateCreated:'',
 				}
 			},
+			//custom function for modal, should edit item then hide the modal.
 			handleSubmit(){
 				this.$emit('editLink',this.editItem);
-				console.log('linkModalEdit' + this.editItem.index);
 				this.$nextTick(function(){
 					this.$bvModal.hide('linkModalEdit' + this.editItem.index);
 				})

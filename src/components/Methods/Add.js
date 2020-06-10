@@ -1,8 +1,6 @@
 export function addLinkHelper(link,linkArray){
-	//let new variable = link.
+	//create new date and add to link. then add link to the link data of main app (app.vue).
 	let newLink = link;
 	newLink.dateCreated = new Date().toString();
 	linkArray.push(newLink);
-	//new variable.datecreated = new date()
-	//add link into set of links
 }

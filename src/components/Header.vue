@@ -1,7 +1,9 @@
 <template>
 	<div>
+		<!-- just add button-->
 		<b-button v-b-modal = "'modal-add'"	>Add</b-button>
-		
+
+		<!-- form modal for adding item-->
 		<b-modal id ="modal-add" title = "Add link" ref = "modal-add"
 			@ok="handleOk"
 			@hidden="resetModal"
@@ -53,6 +55,7 @@
 </template>
 <script>
 	export default{
+		//contains form data for modal.
 		data: function(){
 			return{
 				form:{
@@ -63,17 +66,20 @@
 			}
 		},
 		methods:{
+			//when ok clicked. prevent default actions.
 			handleOk(bvModalEvt){
 				bvModalEvt.preventDefault();
 				this.handleSubmit();
 
 			},
+			//custom ok function. should add item to links array in main app.vue.
 			handleSubmit(){
 				this.$emit('addLink',this.form);
 				this.$nextTick(function(){
 					this.$bvModal.hide('modal-add');
 				})
 			},
+			//reset modal every time cancelled/hiding/showing modal.
 			resetModal(){
 				this.form = {
 					linkName:'',

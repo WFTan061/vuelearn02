@@ -6,9 +6,9 @@ Methods function:
 
 Add Link: done
 Delete Link: done
-Edit Link : In Progress, successfully transferred data from table to modal. Modal design in progress but created.
+Edit Link : Done
 
-Refinement probably required for the adding/deleting link.
+Refinement probably required for these methods. not sure whether safe to mutate within other methods.
 ```
 ## Project Description
 ```

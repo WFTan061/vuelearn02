@@ -1,17 +1,14 @@
 export function editLinkHelper(link,links){
-	let editedLink = {
-		linkName:link.linkName,
-		linkAddress:link.linkAddress,
-		linkIcon:link.linkIcon,
-		dateCreated:link.dateCreated,
-	}
+	//create variable key for iteration
 	let key;
-	let keys = Object.keys(editedLink);
+	//for iteration of object properties.
+	let keys = Object.keys(link);
+	//edit the corresponding link in the main link array to be same as edited data.
 	for(key in keys){
-		console.log(key);
-	links[link.index][keys[key]] = editedLink[keys[key]];}
-	console.log(link.index)
-	console.log(editedLink)
-	console.log(links);
+		if(keys[key]!=='index'){
+			links[link.index][keys[key]] = link[keys[key]];
+		}
+	}
+
 	// console.log("editing link" + editedLink + links);
 }
