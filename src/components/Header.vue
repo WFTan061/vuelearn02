@@ -69,7 +69,6 @@
 
 			},
 			handleSubmit(){
-				console.log(this.form.linkName + " " + this.form.linkAddress + " " + this.form.linkIcon);
 				this.$emit('addLink',this.form);
 				this.$nextTick(function(){
 					this.$bvModal.hide('modal-add');

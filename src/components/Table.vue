@@ -22,10 +22,25 @@
 				</template>
 
 				<template v-slot:cell(actions) = "data">
-					<b-button v-b-modal="'linkModalEdit' + data.index" @click="toEdit(data.item)"><b-icon icon = "pencil"></b-icon></b-button>
+					<b-button v-b-modal="'linkModalEdit' + data.index" @click="toEdit(data.item,data.index)"><b-icon icon = "pencil"></b-icon></b-button>
 					<b-modal v-bind:id = "'linkModalEdit' + data.index"
+					@ok="handleOk"
+					@hidden="resetModal"
 					>
 						<b-form @submit.prevent>
+							<b-form-group
+								id="name"
+								label = "index"
+								label-for = "linkIndex"
+							>
+								<b-form-input
+								id="linkIndex"
+								v-model = "editItem.index"
+								type = "text"
+								readOnly
+								>
+								</b-form-input>
+							</b-form-group>
 							<b-form-group
 								id="name"
 								label = "Link Name"
@@ -42,10 +57,10 @@
 							<b-form-group
 								id="address"
 								label = "Link address"
-								label-for = "linkaddress"
+								label-for = "linkAddress"
 							>
 								<b-form-input
-								id="linkaddress"
+								id="linkAddress"
 								v-model = "editItem.linkAddress"
 								type = "text"
 								required
@@ -53,7 +68,7 @@
 								</b-form-input>
 							</b-form-group>
 							<b-form-group
-								id="name"
+								id="icon"
 								label = "Link Icon"
 								label-for = "linkicon"
 							>
@@ -63,6 +78,19 @@
 								type = "text"
 								required
 								placeholder = "Enter link icon path">
+								</b-form-input>
+							</b-form-group>
+							<b-form-group
+								id="creation"
+								label = "dateCreated"
+								label-for = "creation"
+							>
+								<b-form-input
+								id="creation"
+								v-model = "editItem.dateCreated"
+								type = "text"
+								readOnly
+								>
 								</b-form-input>
 							</b-form-group>
 						</b-form>			
@@ -88,15 +116,40 @@
 					index:-1, //item to edit
 					linkName:'', //name given to the link
 					linkAddress:'', //address to be led to when link is clicked
-					linkIcon:'',  //icon for the link.
+					linkIcon:'',  //icon for the link.	
 					dateCreated:'',
 				}
 			}
 		},
 		props:['links'],
 		methods:{
-			toEdit(item){
-				this.editItem = item;
+			toEdit(item,index){
+				let keys = Object.keys(item);
+				let key;
+				for (key in keys){
+					this.editItem[keys[key]] = item[keys[key]];
+				}
+				this.editItem.index = index;
+			},
+			handleOk(bvModalEvt){
+				bvModalEvt.preventDefault();
+				this.handleSubmit();
+			},
+			resetModal(){
+				this.editItem = {
+					index:-1, //item to edit
+					linkName:'', //name given to the link
+					linkAddress:'', //address to be led to when link is clicked
+					linkIcon:'',  //icon for the link.
+					dateCreated:'',
+				}
+			},
+			handleSubmit(){
+				this.$emit('editLink',this.editItem);
+				console.log('linkModalEdit' + this.editItem.index);
+				this.$nextTick(function(){
+					this.$bvModal.hide('linkModalEdit' + this.editItem.index);
+				})
 			}
 		}
 	}

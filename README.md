@@ -4,11 +4,11 @@
 ```
 Methods function: 
 
-Add/Edit/Delete link. Currently placeholder functions to test they are passed properly to components.
+Add Link: done
+Delete Link: done
+Edit Link : In Progress, successfully transferred data from table to modal. Modal design in progress but created.
 
-Modal for adding: layout done, figuring out where to add function to "ok" button.
-
-Modal for editing : TODO, might need additional function.
+Refinement probably required for the adding/deleting link.
 ```
 ## Project Description
 ```
