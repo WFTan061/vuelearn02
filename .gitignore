@@ -4,6 +4,12 @@ node_modules
 /public
 /src/dist
 
+
+# firebase stuff
+/firebase
+.firebaserc
+firebase.json
+
 # local env files
 .env.local
 .env.*.local
